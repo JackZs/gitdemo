@@ -11,7 +11,13 @@ module.exports = {
 		  	test:/\.js$/,
 		  	use:['babel-loader?cacheDirectory=true'],
 		  	include:path.join(__dirname, 'src')
-		  }]
+		  },
+		  {
+		  	test:/\.vue$/,
+		  	loader:'vue-loader'
+		  }
+		  ]
+		
 	},
 	devServer:{
 		contentBase: path.join(__dirname, './dist'),

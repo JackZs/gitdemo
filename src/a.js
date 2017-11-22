@@ -20,3 +20,6 @@ let c ={
 	b:2
 }
 export default  c
+
+
+
