@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<a href="file:///E:/gitdemo/test/f.html">111</a>
+	<script type="text/javascript">
+
+  function Point(name,age) {
+  	this.age = age
+  	this.name = name
+  } 
+ Point.run =function (argument) {
+ 	console.log('run')
+ }
+ Point.prototype.dance = function (argument) {
+ 	console.log('dance')
+ }
+ var p = new Point('Jack',18)
+ p.__proto__.eat = function (argument) {
+ 	console.log('eat')
+ }
+ var p1 = new Point('Jack',18)
+ console.log(p1.eat)
+ console.log(Point.__proto__)
+ console.log(p.__proto__)
+	</script>
+</body>
+</html>
