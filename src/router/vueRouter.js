@@ -1,8 +1,5 @@
 import Router from 'vue-router'
 import Vue from 'vue'
-import home from '../vuePages/home.vue'
-import order from '../vuePages/order.vue'
-import me from '../vuePages/me.vue'
 Vue.use(Router)
 const router = new Router({
 	mode:'history',
@@ -18,6 +15,10 @@ const router = new Router({
 	{
 		path:'/me',
 		component: (resolve)=>require(['../vuePages/me.vue'],resolve)
+	},
+	{
+		path:'/selectCar',
+		component:(resolve)=>require(['../vuePages/selectCar.vue'],resolve)
 	}
 	]
 })

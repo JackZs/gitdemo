@@ -1,9 +1,18 @@
 const path = require('path')
 module.exports = {
-	entry:path.join(__dirname,'src/index.js'),
+	entry:['react-hot-loader/patch',path.join(__dirname,'src/index.js')],
 	output:{
 		path:path.join(__dirname,'./dist'),
 		filename:'bundle.js'
+	},
+	resolve:{
+       alias:{
+       	reactPages:path.join(__dirname,'src/reactPages'),
+       	vuePages:path.join(__dirname,'src/vuePages'),
+       	vueComponent:path.join(__dirname,'src/vueComponent'),
+       	reactComponent:path.join(__dirname,'src/reactComponent'),
+       	router:path.join(__dirname,'src/router')
+       }
 	},
 	module:{
 		  rules:[
@@ -15,13 +24,21 @@ module.exports = {
 		  {
 		  	test:/\.vue$/,
 		  	loader:'vue-loader'
+		  },
+		  { 
+		  	test:/\.css$/,
+		  	loaders:['style-loader','css-loader']
+		  },
+		  { 
+		  	test:/\.less$/,
+		  	loaders:['style-loader','css-loader','less-loader']
 		  }
 		  ]
 		
 	},
 	devServer:{
 		contentBase: path.join(__dirname, './dist'),
-		compress: true,
+		// compress: true,
 		port:3000,
 		historyApiFallback: true,
 		proxy: {
