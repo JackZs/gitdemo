@@ -5,7 +5,61 @@
 </head>
 <body>
 <script type="text/javascript">
-	console.log(Promise)
+
+  function deepCloneObj(obj) {
+  		if(obj instanceof Array){
+			var newArr= []
+	      for(var k=0;k<obj.length;k++){
+	      	
+	      	newArr.push(obj[k])
+	      }
+         return newArr
+		}else if(obj instanceof Object){
+			 var newObj = {}
+			 for(var k in obj){
+      	
+      	newObj[k] = deepCloneObj(obj[k])
+      }
+     return newObj
+		}else {
+			return obj
+		}
+ }
+  var obj1 = {
+  	a1:{
+  		a: 1,
+	  	b: 2,
+	  	c: function (argument) {
+	  		console.log(111)
+	  	}
+	  },
+	a2:{
+  		a: 1,
+	  	b: 2,
+	  	c: function (argument) {
+	  		console.log(111)
+	  	}
+	  }
+
+  }
+  var obj2 = deepCloneObj(obj1)
+    obj2.a1.c = 100
+    obj2.a1.c = 100
+  console.log(obj1)
+   function deepCloneArr(arr) {
+    var newArr= []
+      for(var k=0;k<arr.length;k++){
+      	
+      	newArr.push(arr[k])
+      }
+     return newArr
+  }
+  console.log(obj2)
+  var arr1 = [1,2,3,4]
+  var arr2 = deepCloneObj(arr1)
+  arr2[0]=100
+  console.log(arr1)
+  console.log(arr2)
 </script>
 </body>
 </html>

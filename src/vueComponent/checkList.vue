@@ -1,23 +1,27 @@
 <template>
 	 <div class="cl-checklist"  v-show="isShow">
-	       <div class="topbar">
-		       <span class="cancel" @click="cancel()">取消</span>
-		       <span class="title">选择考场</span>
-		       <span class="confirm" @click="complete()">完成</span>
-	        </div>
-	       <div class="desc">
-	       		您已选中 <span>{{checkboxValue.length}}</span> 个,最多可选<span>3</span>个
-	        </div>
-	       <div class="list">
-			  <div class="line border-1px" v-for="(item,index) in data" :key="index" :class="{'selected':item.isChecked,'disabled':item.isDisabled}" @click="selctedItem(item)">
-			     <div class="l">
-			        <div class="title">{{item.label}}</div>
-			        <div class="address">{{item.address}}</div>
-			       </div>
-			      <div class="r"></div>
-			   </div>
-		     </div>
+	 	   <div class="checklist">
+		       <div class="topbar">
+			       <span class="cancel" @click="cancel()">取消</span>
+			       <span class="title">选择考场</span>
+			       <span class="confirm" @click="complete()">完成</span>
+		        </div>
+		       <div class="desc">
+		       		您已选中 <span>{{checkboxValue.length}}</span> 个,最多可选<span>{{maxNum}}</span>个
+		        </div>
+		       <div class="list">
+				  <div class="line border-1px" v-for="(item,index) in data" :key="index" :class="{'selected':item.isChecked,'disabled':item.isDisabled}" @click="selctedItem(item)">
+				     <div class="l">
+				        <div class="title">{{item.label}}</div>
+				        <div class="address">{{item.address}}</div>
+				       </div>
+				      <div class="r"></div>
+				    
 
+				    </div>
+			     </div>
+		   </div>
+           <div class="checklist-overlay"  v-if="isShow"></div>
     </div>
 	
 </template>
@@ -31,6 +35,10 @@
 			data:{
 				type:Array,
 				default: []
+			},
+			maxNum:{
+				type: Number,
+				default:0
 			}
 		},
 		 data(){
@@ -44,7 +52,7 @@
                  this.checkboxValue =this.data.filter(function(item) {
    		 			return item.isChecked;
    		 		})
-                 if(this.checkboxValue.length ===3){
+                 if(this.checkboxValue.length === this.maxNum){
                     this.data.map(function (item) {
                     	if(!item.isChecked){
                     		item.isDisabled = true
@@ -121,26 +129,26 @@
 			    justify-content: center;
 			    align-items: center;
 			    height: 50px;
-			    .l .address{
-				    color: rgb(159,159,159);
-				    position: relative;
-				    padding-left: 15px;
-				  }
-			    .l{
-				    display: -webkit-flex;
-				    display: flex;
-				    flex-direction: column;
-				    justify-content: center;
-				    align-items: flex-start;
-				    width: 90%;
-			       }
-			    .r{
-			      width: 20px;
-			      height: 20px;
-			      border-radius: 50%;
-			      border:1px solid #d8d8d8;
-			     }
-                 }
+				  .l .address{
+					    color: rgb(159,159,159);
+					    position: relative;
+					    padding-left: 15px;
+					  }
+				    .l{
+					    display: -webkit-flex;
+					    display: flex;
+					    flex-direction: column;
+					    justify-content: center;
+					    align-items: flex-start;
+					    width: 90%;
+				       }
+				    .r{
+				      width: 20px;
+				      height: 20px;
+				      border-radius: 50%;
+				      border:1px solid #d8d8d8;
+				     }
+                    }
                  .selected
                  {
                  	.l .title{
@@ -177,9 +185,29 @@
 				    border-radius: 50%;
 				    background-color: #1799fa;
 				  }
-            } 
-		          
+            } 	          
 	 }
+	 .checklist-overlay{
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  right: 0;
+		  bottom: 0;
+		  z-index: 1000;
+		  background: rgba(0, 0, 0, .5);
+		  transition: all .5s;
+		}
+	 .checklist{
+		    position: fixed;
+		    bottom: 0;
+		    left: 0;
+		    top: 100px;
+		    z-index: 2000;
+		    width: 100%;
+		    background-color: #fff;
+		    -webkit-transition: all .5s;
+		    transition: all .5s;
+	}
 
 }
 </style>

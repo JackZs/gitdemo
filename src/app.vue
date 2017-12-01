@@ -24,7 +24,10 @@ export default {
  .nav-bar{
  	display: flex;
  	a{
- 		display: block;
+ 		display: inline-flex;
+ 		border:1px solid orangered;
+ 		justify-content:center;
+ 		align-items:center;
  		width: 25%;
  		height: 35px;
  	}
