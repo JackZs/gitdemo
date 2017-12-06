@@ -6,19 +6,19 @@ const router = new Router({
 	routes:[
 	{
 		path:'/home',
-		component:(resolve)=> require(['../vuePages/home.vue'],resolve)
+		component:(resolve)=> require(['vuePages/home.vue'],resolve)
 	},
 	{
 		path:'/order',
-		component: (resolve)=>require(['../vuePages/order.vue'],resolve)
+		component: (resolve)=>require(['vuePages/order.vue'],resolve)
 	},
 	{
 		path:'/me',
-		component: (resolve)=>require(['../vuePages/me.vue'],resolve)
+		component: (resolve)=>require(['vuePages/me.vue'],resolve)
 	},
 	{
 		path:'/selectCar',
-		component:(resolve)=>require(['../vuePages/selectCar.vue'],resolve)
+		component:(resolve)=>require(['vuePages/selectCar.vue'],resolve)
 	}
 	]
 })

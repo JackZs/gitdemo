@@ -11,7 +11,8 @@ module.exports = {
        	vuePages:path.join(__dirname,'src/vuePages'),
        	vueComponent:path.join(__dirname,'src/vueComponent'),
        	reactComponent:path.join(__dirname,'src/reactComponent'),
-       	router:path.join(__dirname,'src/router')
+       	router:path.join(__dirname,'src/router'),
+       	reducers:path.join(__dirname,'src/redux/reducers')
        }
 	},
 	module:{
