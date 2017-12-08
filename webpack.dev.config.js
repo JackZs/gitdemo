@@ -33,17 +33,28 @@ module.exports = {
 		  { 
 		  	test:/\.less$/,
 		  	use:['style-loader','css-loader','less-loader']
+		  },
+		  {
+		  	test:/\.jpg|png|gif$/,
+		  	use:[{
+		  		loader:'url-loader',
+		  		options:{
+		  			limit:8192
+		  		}
+		  	}]
+
 		  }
 		  ]
 		
 	},
 	devServer:{
 		contentBase: path.join(__dirname, './dist'),
-		// compress: true,
+		compress: true,
 		port:3000,
 		historyApiFallback: true,
-		proxy: {
-      "/api": "http://localhost:3000"
-	  },
-	}
+		// proxy: {
+  //     "/api": "http://localhost:3000"
+	 //  },
+	},
+	devtool:'inline-source-map'
 }

@@ -9,6 +9,9 @@ export default {
 		return {
 			
 		}
+	},
+	mounted(){
+		fetch('http://localhost:3000/api/user.json')
 	}
 }
 </script>

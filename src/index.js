@@ -21,7 +21,7 @@ if(module.hot){
 function renderWithHotReload(rootElement) {
 	ReactDom.render(<AppContainer><Provider store={store}>{rootElement}</Provider></AppContainer>,document.getElementById("app"))
 }
-//vue
+// vue
 // new Vue({
 // 	el:'#app',
 // 	router:vueRouter,
